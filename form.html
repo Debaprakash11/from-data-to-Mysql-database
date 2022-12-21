@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{ 
+    background-image: url("bg.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;  
+    margin:0;  
+}
+.container{
+    width: 600px;
+    background-color: rgb(222, 223, 228);
+    border-radius: 4px;
+    overflow: hidden;
+}
+.header{
+    background-color: #d8d1d1;
+    padding: 10px 20px;
+}
+.form{
+    padding: 20px 40px;
+}
+
+.form-control{
+    margin-bottom:10px;
+    padding-bottom: 10px;
+    position: relative;
+}
+.form-control lable {
+    display: inline-block;
+    margin-bottom:5px;
+    font-weight: bold;
+}
+.form-control input{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border:2px solid #d8d1d1;
+}
+#txtgenderName{
+    width: 50%;   
+}
+.form-control.success input{
+    border:2px solid rgb(26, 167, 26);
+}
+.form-control.error input{
+    border:2px solid rgb(228, 29, 22);
+}
+.form-control small{
+    position:absolute;
+    margin: 3px;
+    visibility: hidden;
+}
+.form-control #submit{
+    background-color: black;
+    color:blue;
+    padding: 10px 20px;
+    width: 30%;
+    border-radius:4px;
+    border:none;
+    cursor: pointer;
+}
+.form-control #submit:hover{
+    background-color: rgb(4, 4, 5);
+    color:rgb(252, 247, 247);
+    padding: 10px 20px;
+    width: 30%;
+    border-radius:4px;
+    border:none;
+    cursor: pointer;
+}
+.form-control a{
+    background-color: black;
+    color:blue;
+    text-decoration: none;
+    padding: 10px 20px;
+    width: 30%;
+    border-radius:4px;
+
+    border:2px solid black;
+    cursor: pointer;
+}
+.form-control a:hover{
+    background-color: rgb(4, 4, 5);
+    color:rgb(252, 247, 247);
+    text-decoration: none;
+    padding: 10px 20px;
+    width: 30%;
+    border-radius:4px;
+    border:2px solid black;
+    border:none;
+    cursor: pointer;
+}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <form class="form" action="/" method="post" onsubmit="validateInput()">
+                <!-- name -->
+                <div class="form-control">
+                    <lable for="username" name="username">Name *</lable>
+                    <input id="Username" type="text" name="Firstname" placeholder="firstname"/><br>
+                    <input id="Username" type="text" name="Lastname" placeholder="Lastname" />
+                    <small>Error Message</small>
+                </div>
+                <!-- date of birth -->
+                <div class="form-control">
+                    <lable for="dbo" name="dob">Date of Birth *</lable>
+                    <input id="dob" type="date" name="dob" />
+                    <small>Error Message</small>
+                </div>
+                <!-- email -->
+                <div class="form-control">
+                    <lable for="email" name="email">Email *</lable>
+                    <input id="email" type="email" name="email" />
+                    <small>Error Message</small>
+                </div>
+                <!-- father name -->
+                <div class="form-control">
+                    <lable for="fathername" name="fathername">Father Name*</lable>
+                    <input id="fatherName" type="text" name="fatherFirstname" placeholder="firstname"/><br>
+                    <input id="fatherName" type="text" name="fatherLastname" placeholder="Lastname" />
+                    <small>Error Message</small>
+                </div>
+                <!-- mother name -->
+                <div class="form-control">
+                    <lable for="mothername" name="mothername">Mother Name*</lable>
+                    <input id="motherName" type="text" name="motherFirstname" placeholder="firstname"/><br>
+                    <input id="motherName" type="text" name="motherLastname" placeholder="Lastname" />
+                    <small>Error Message</small>
+                </div>
+                <!-- gender -->
+                <div class="form-control">
+                    <input type="radio" id="txtgenderName" name="Gender" value="male">
+                    <label for="male">male</label>
+                    <input type="radio" id="txtgenderName" name="Gender" value="Female">
+                    <label for="Female">Female</label>
+                    <small>Error Message</small>
+                </div>
+                <!-- Nationlity -->
+                <div class="form-control">
+                    <lable for="nationName" name="nationname">Nationality *</lable>
+                    <input id="Nationality" type="text" name="Nationality"/>
+                    <small>Error Message</small>
+                </div>
+                <!-- Home Address -->
+                <div class="form-control">
+                    <lable for="address" name="address">Home Address *</lable>
+                    <input id="address" type="text" name="Street" placeholder="Street"/><br>
+                    <input id="address" type="text" name="City" placeholder="City"/><br>
+                    <select name="Country" id="Country">
+                        <option value="india">India</option>
+                        <option value="usa">USA</option>
+                        <option value="englond">Englond</option>
+                        <option value="uae">UAE</option>
+                      </select>
+                    <small>Error Message</small>
+                </div>
+                <!-- Number -->
+                <div class="form-control">
+                    <lable for="Mobile" name="Mobile">Telephone-mobile *</lable>
+                    <input id="Mobile" type="text" name="Mobile" />
+                    <small>Error Message</small>
+                </div>
+                <!-- Number -->
+                <div class="form-control">
+                    <lable for="MobileH" name="MobileH">Telephone-Home *</lable>
+                    <input id="MobileH" type="text" name="MobileH" />
+                    <small>Error Message</small>
+                </div>
+                <div class="form-control">
+                    <button>Submit</button>
+                    <!-- <input id="Submit" type="submit" onclick="validateInput()"> -->
+                    <!-- type="button" onclick="validateInput()" -->
+                    
+                </div>
+            </form>
+        </div>
+        <script>
+             let Username=document.getElementById("Username");
+             let email=document.getElementById("email");
+             let dob=document.getElementById("dob");
+             let Nationality=document.getElementById("Nationality");
+             let motherName=document.getElementById("motherName");
+             let fatherName=document.getElementById("fatherName");
+             let mobile=document.getElementById("Mobile");
+             let mobileh=document.getElementById("MobileH");
+
+             
+            function validateInput(){
+                //check Firstname is empty 
+                if(Username.value.trim()===""){
+                onError(Username,"Username cannot be empty");
+                }else{
+                    onSuccess(Username);
+                }
+                
+                //check dateOfBirth is empty 
+                if(dob.value.trim()===""){
+                    onError(dob,"dob Name cannot be empty");
+                }else{
+                    onSuccess(dob);
+                }
+
+                //check fathername is empty 
+                if(fatherName.value.trim()===""){
+                    onError(fatherName,"fatherName cannot be empty");
+                }else{
+                    onSuccess(fatherName);
+                }
+                            
+                //check mothername is empty 
+                if(motherName.value.trim()===""){
+                    onError(motherName,"motherName cannot be empty");
+                }else{
+                    onSuccess(motherName);
+                }
+
+                //check nationName is empty 
+                if(Nationality.value.trim()===""){
+                    onError(Nationality,"Nationality cannot be empty");
+                }else{
+                    onSuccess(Nationality);
+                }
+
+
+                //check usermail is empty 
+                if(email.value.trim()===""){
+                    onError(email,"Email cannot be empty");
+                }else{
+                    if(!isValidEmail(email.value.trim())){
+                        onError(email,"Email is not valid");
+                    }else{
+                        onSuccess(email);
+                    }
+                } 
+
+                //check Mobile is empty 
+                if(mobile.value.trim()===""){
+                    onError(mobile,"number cannot be empty");
+                }else{
+                    if(!isValidNumber(mobile.value.trim())){
+                        onError(mobile,"number is not valid");
+                    }else{
+                        onSuccess(mobile);
+                    }
+                }    
+
+                //check MobileH is empty 
+                if(mobileh.value.trim()===""){
+                    onError(mobileh,"number cannot be empty");
+                }else{
+                    if(!isValidNumber(mobileh.value.trim())){
+                        onError(mobileh,"number is not valid");
+                    }else{
+                        onSuccess(mobileh);
+                    }
+                }    
+            } 
+            // document.getElementById("Submit").addEventListener("click",(event)=>{
+            // event.preventDefault();
+            // validateInput();
+
+            // });
+                function onSuccess(input){
+                    let parent=input.parentElement;
+                    let messageEle=parent.querySelector("small");
+                    messageEle.style.visibility="hidden"; 
+                    parent.classList.remove("error");
+                    parent.classList.add("success");  
+                }
+
+                function onError(input,message){
+                    let parent=input.parentElement;
+                    let messageEle=parent.querySelector("small");
+                    messageEle.style.visibility="visible";
+                    messageEle.innerText=message;  
+                    parent.classList.add("error");
+                    parent.classList.remove("success");
+                }
+                function isValidEmail(email){
+            return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+            }
+
+            function isValidNumber(mobile){
+                    var re = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+                    return re.test(mobile);
+                } 
+                 
+        </script>
+    </body>
+</html>
